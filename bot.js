@@ -217,31 +217,49 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 
-const adminprefix = "$vip";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const devs = ['466425075487342615'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+client.on('message', message => {
+    var prefix = "M";
     
-if (message.content.startsWith(adminprefix + 'setgame')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
-}
-
-});
+      if (!message.content.startsWith(prefix)) return;
+      var args = message.content.split(' ').slice(1);
+      var argresult = args.join(' ');
+      if (message.author.id == 411564557027508235) return;
+    
+    
+    if (message.content.startsWith(prefix + 'playing')) {
+    if (message.author.id !== '411564557027508235') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+    } else
+    
+     
+    if (message.content.startsWith(prefix + 'streem')) {
+    if (message.author.id !== '466425075487342615') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult, "http://twitch.tv/HA");
+        message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+    } else
+    
+    if (message.content.startsWith(prefix + 'setname')) {
+    if (message.author.id !== '466425075487342615') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+      client.user.setUsername(argresult).then
+          message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+      return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+    } else
+        
+    if (message.content.startsWith(prefix + 'setavatar')) {
+    if (message.author.id !== '466425075487342615') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setAvatar(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+    } else
+    
+    
+    if (message.content.startsWith(prefix + 'watching')) {
+    if (message.author.id !== '234454368072630283') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+        client.user.setActivity(argresult, {type : 'watching'});
+     message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+    }
+    
+     });
 
 client.on("message", message => {
  if (message.content === `${prefix}help`) {
